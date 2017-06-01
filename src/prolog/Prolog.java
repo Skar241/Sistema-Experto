@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package prolog;
+import prolog.vistas.testTipoCuerpo;
 import org.jpl7.Query;
 import org.jpl7.Term;
 

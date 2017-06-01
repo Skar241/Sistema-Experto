@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package prolog;
+package prolog.vistas;
 
 import org.jpl7.Query;
 
@@ -38,26 +38,26 @@ public class testTipoCuerpo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        opcionesP1 = new javax.swing.JComboBox<>();
-        opcionesP2 = new javax.swing.JComboBox<>();
-        opcionesP3 = new javax.swing.JComboBox<>();
-        opcionesP4 = new javax.swing.JComboBox<>();
+        opcionesP1 = new javax.swing.JComboBox<String>();
+        opcionesP2 = new javax.swing.JComboBox<String>();
+        opcionesP3 = new javax.swing.JComboBox<String>();
+        opcionesP4 = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
-        opcionesP5 = new javax.swing.JComboBox<>();
+        opcionesP5 = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
-        opcionesP6 = new javax.swing.JComboBox<>();
+        opcionesP6 = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
-        opcionesP7 = new javax.swing.JComboBox<>();
+        opcionesP7 = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
-        opcionesP8 = new javax.swing.JComboBox<>();
+        opcionesP8 = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
-        opcionesP9 = new javax.swing.JComboBox<>();
+        opcionesP9 = new javax.swing.JComboBox<String>();
         jLabel13 = new javax.swing.JLabel();
-        opcionesP10 = new javax.swing.JComboBox<>();
+        opcionesP10 = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
-        opcionesP11 = new javax.swing.JComboBox<>();
+        opcionesP11 = new javax.swing.JComboBox<String>();
         jLabel15 = new javax.swing.JLabel();
-        opcionesP12 = new javax.swing.JComboBox<>();
+        opcionesP12 = new javax.swing.JComboBox<String>();
         enviarDatos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         resTipoCuerpo = new javax.swing.JTextArea();
@@ -102,28 +102,28 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel6.setText("4. De niño(a) era:");
 
-        opcionesP1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Ser demasiado flaco", "Ser delgado y musculado", "Acumular demasiada grasa" }));
+        opcionesP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Ser demasiado flaco", "Ser delgado y musculado", "Acumular demasiada grasa" }));
         opcionesP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP1ActionPerformed(evt);
             }
         });
 
-        opcionesP2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Largo y sin mucho relieve", "Cuadrado (hombres) / en forma de X es decir cintura estrecha (mujeres).", "Redondo y suave (hombres) / en forma de pera (mujeres)" }));
+        opcionesP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Largo y sin mucho relieve", "Cuadrado (hombres) / en forma de X es decir cintura estrecha (mujeres).", "Redondo y suave (hombres) / en forma de pera (mujeres)" }));
         opcionesP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP2ActionPerformed(evt);
             }
         });
 
-        opcionesP3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Pequeña y fragil", "Mediana", "Grande" }));
+        opcionesP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Pequeña y fragil", "Mediana", "Grande" }));
         opcionesP3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP3ActionPerformed(evt);
             }
         });
 
-        opcionesP4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Demasiado flaco", "Normal", "Gordito (a)" }));
+        opcionesP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Demasiado flaco", "Normal", "Gordito (a)" }));
         opcionesP4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP4ActionPerformed(evt);
@@ -132,7 +132,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel8.setText("5. Mi ritmo de vida es:");
 
-        opcionesP5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Preocupado", "Dimámico", "Tranquilo y reposado" }));
+        opcionesP5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Preocupado", "Dimámico", "Tranquilo y reposado" }));
         opcionesP5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP5ActionPerformed(evt);
@@ -141,7 +141,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel9.setText("6. Mi nivel de actividad es:");
 
-        opcionesP6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Hiperactivo", "Muy activo", "Sedentario" }));
+        opcionesP6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Hiperactivo", "Muy activo", "Sedentario" }));
         opcionesP6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP6ActionPerformed(evt);
@@ -150,7 +150,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel10.setText("7. Las personas me dicen que:");
 
-        opcionesP7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Debo engordar", "Estoy bien", "Debo perder peso" }));
+        opcionesP7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Debo engordar", "Estoy bien", "Debo perder peso" }));
         opcionesP7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP7ActionPerformed(evt);
@@ -159,7 +159,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel11.setText("8.Al rodear la muñeca con el dedo medio y pulgar de tu otra mano:");
 
-        opcionesP8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Un dedo se pone por encima del otro", "Apenas se tocan", "Los dos dedos no se tocan", " ", " " }));
+        opcionesP8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Un dedo se pone por encima del otro", "Apenas se tocan", "Los dos dedos no se tocan", " ", " " }));
         opcionesP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP8ActionPerformed(evt);
@@ -168,7 +168,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel12.setText("9. Mi metabilismo es:");
 
-        opcionesP9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Demasiado rapido", "Normal", "Lento", " ", " " }));
+        opcionesP9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Demasiado rapido", "Normal", "Lento", " ", " " }));
         opcionesP9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP9ActionPerformed(evt);
@@ -177,7 +177,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel13.setText("10. Sobre mi peso:");
 
-        opcionesP10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Sufro para subir de peso", "Gano y pierdo peso fácilmente", "Gano peso fácilmente pero me cuesta perderlo", " ", " " }));
+        opcionesP10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Sufro para subir de peso", "Gano y pierdo peso fácilmente", "Gano peso fácilmente pero me cuesta perderlo", " ", " " }));
         opcionesP10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP10ActionPerformed(evt);
@@ -186,7 +186,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel14.setText("11. Tengo habre:");
 
-        opcionesP11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Raramente", "A la hora de comer", "Todo el tiempo", " ", " " }));
+        opcionesP11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Raramente", "A la hora de comer", "Todo el tiempo", " ", " " }));
         opcionesP11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP11ActionPerformed(evt);
@@ -195,7 +195,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
 
         jLabel15.setText("12.  La gente me podría describir como una persona:");
 
-        opcionesP12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige una opción", "Intelectual", "Física", "Emocional" }));
+        opcionesP12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elige una opción", "Intelectual", "Física", "Emocional" }));
         opcionesP12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesP12ActionPerformed(evt);
