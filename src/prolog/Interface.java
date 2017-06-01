@@ -6,6 +6,7 @@
 package prolog;
 
 import prolog.vistas.LogIn;
+import prolog.vistas.Registro;
 
 /**
  *
@@ -43,6 +44,11 @@ public class Interface extends javax.swing.JFrame {
         jLabel2.setText("Sistema Experto en Fitness");
 
         jToggleButton1.setText("Registrarse");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setText("Iniciar Sesión");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +99,11 @@ public class Interface extends javax.swing.JFrame {
         log.setVisible(true);
         
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        Registro reg = new Registro();
+        reg.setVisible(true);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments

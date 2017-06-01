@@ -33,8 +33,6 @@ public class LogIn extends javax.swing.JFrame {
         jTextPane1 = new javax.swing.JTextPane();
         jToggleButton1 = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Log In");
 
