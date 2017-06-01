@@ -28,6 +28,7 @@ public class XmlReader {
     
     private boolean init(String dir){
         try{
+            ///hola
            File file = new File(dir);
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
