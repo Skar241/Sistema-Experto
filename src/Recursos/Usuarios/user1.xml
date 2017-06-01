@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Usuario>user1</Usuario>
+<edad>17</edad>
+<sexo>Mujer</sexo>
+<peso>100</peso>
+<altura>50</altura>
+<disponibilidad>3</disponibilidad>
+<plan>Semestral</plan>
+<tipocuerpo>ectomorfo</tipocuerpo>
