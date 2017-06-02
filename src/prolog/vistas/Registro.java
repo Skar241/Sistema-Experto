@@ -211,8 +211,11 @@ public class Registro extends javax.swing.JFrame {
                 writer = new XmlWriter("./src/Recursos/Usuarios/"+txt+".xml");
                 writer.add("nombre", txt);
                 writer.add("edad", jTextPane2.getText());
-                if(writer.write())
+                if(writer.write()){
                     JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
+                    Principal prin = new Principal();
+                    prin.setVisible(true);
+                }
                 else
                     JOptionPane.showMessageDialog(null,"Se detectó un error al generar el registro");
             }
