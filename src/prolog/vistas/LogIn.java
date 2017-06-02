@@ -5,6 +5,9 @@
  */
 package prolog.vistas;
 
+import javax.swing.JOptionPane;
+import prolog.conectores.XmlReader;
+
 /**
  *
  * @author Antonio
@@ -41,6 +44,11 @@ public class LogIn extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextPane1);
 
         jToggleButton1.setText("Iniciar Sesión");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +85,19 @@ public class LogIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        String txt = jTextPane1.getText();
+        if(txt.isEmpty())
+            JOptionPane.showMessageDialog(null,"Ingrese un Nombre de Usuario");
+        else{
+            XmlReader reader = new XmlReader("./src/Recursos/Usuarios/"+txt+".xml");
+            String data = reader.read("nombre");
+            JOptionPane.showMessageDialog(null,"Bienvenido "+data);
+            Principal prin = new Principal();
+            prin.setVisible(true);
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
