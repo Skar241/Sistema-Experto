@@ -207,16 +207,21 @@ public class Registro extends javax.swing.JFrame {
         try {
             XmlWriter writer;
             String txt = jTextPane1.getText();
-            if(validar())
+            if(validar()){
                 writer = new XmlWriter("./src/Recursos/Usuarios/"+txt+".xml");
-            
+                writer.add("nombre", txt);
+                writer.add("edad", jTextPane2.getText());
+                if(writer.write())
+                    JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
+                else
+                    JOptionPane.showMessageDialog(null,"Se detectó un error al generar el registro");
+            }
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private boolean validar(){
-        boolean flg = false;
         if (jTextPane1.getText().isEmpty())
             JOptionPane.showMessageDialog(null,"Ingrese un Nombre de Usuario");
         else if(jTextPane2.getText().isEmpty() || !jTextPane2.getText().matches("[0-9]+"))
@@ -225,9 +230,14 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingresa tu peso con números");
         else if(jTextPane4.getText().isEmpty() || !jTextPane4.getText().matches("[0-9]+\\.?[0-9]+"))
             JOptionPane.showMessageDialog(null,"Ingresa tu altura con números");
+        else if(jComboBox1.getSelectedIndex() == 0)
+            JOptionPane.showMessageDialog(null,"Ingresa la cantidad de días que harás ejercicio");
+        else if(jComboBox2.getSelectedIndex() == 0)
+            JOptionPane.showMessageDialog(null,"Ingresa tu tipo de plan");
+        else if(jComboBox3.getSelectedIndex() == 0)
+            JOptionPane.showMessageDialog(null,"Ingresa tu sexo");
         else
             return true;
-        
         return false;
     }
     /**

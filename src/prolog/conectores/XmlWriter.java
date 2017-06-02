@@ -42,14 +42,21 @@ public class XmlWriter {
     
     public void add(String tag,String value){
         Element tmp = this.doc.createElement(tag);
-        tmp.setNodeValue(value);
+        tmp.appendChild(doc.createTextNode(value));
+        this.root.appendChild(tmp);
     }
     
-    public void write() throws TransformerException{
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	Transformer transformer = transformerFactory.newTransformer();
-	DOMSource source = new DOMSource(this.doc);
-	StreamResult result = new StreamResult(new File(this.file));
-	transformer.transform(source, result);
+    public boolean write(){
+        try{
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(this.doc);
+            StreamResult result = new StreamResult(new File(this.file));
+            transformer.transform(source, result);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
     }
 }
