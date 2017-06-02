@@ -5,6 +5,12 @@
  */
 package prolog.vistas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.xml.parsers.ParserConfigurationException;
+import prolog.conectores.XmlWriter;
+
 /**
  *
  * @author Antonio
@@ -89,6 +95,11 @@ public class Registro extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona una opción", "Mensual", "Semestral", "Anual" }));
 
         jToggleButton2.setText("Registrar");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Mujer", "Hombre" }));
 
@@ -191,6 +202,34 @@ public class Registro extends javax.swing.JFrame {
         test.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // Se guarda en xml los datos del usuario
+        try {
+            XmlWriter writer;
+            String txt = jTextPane1.getText();
+            if(validar())
+                writer = new XmlWriter("./src/Recursos/Usuarios/"+txt+".xml");
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private boolean validar(){
+        boolean flg = false;
+        if (jTextPane1.getText().isEmpty())
+            JOptionPane.showMessageDialog(null,"Ingrese un Nombre de Usuario");
+        else if(jTextPane2.getText().isEmpty() || !jTextPane2.getText().matches("[0-9]+"))
+            JOptionPane.showMessageDialog(null,"Ingresa tu edad con números enteros");
+        else if(jTextPane3.getText().isEmpty() || !jTextPane3.getText().matches("[0-9]+\\.?[0-9]*"))
+            JOptionPane.showMessageDialog(null,"Ingresa tu peso con números");
+        else if(jTextPane4.getText().isEmpty() || !jTextPane4.getText().matches("[0-9]+\\.?[0-9]+"))
+            JOptionPane.showMessageDialog(null,"Ingresa tu altura con números");
+        else
+            return true;
+        
+        return false;
+    }
     /**
      * @param args the command line arguments
      */
