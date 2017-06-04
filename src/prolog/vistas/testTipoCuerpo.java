@@ -19,6 +19,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
     private String tipoCuerpo;
     
     public testTipoCuerpo() {
+        this.tipoCuerpo="";
         initComponents();
     }
 
@@ -87,8 +88,6 @@ public class testTipoCuerpo extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Test para determinar el tipo de cuerpo");
@@ -454,6 +453,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
                 System.out.println("No econtró nada");
                 this.tipoCuerpo = "mesomorfo";
             }
+            
         }catch(Exception e){
         }
         
@@ -462,6 +462,7 @@ public class testTipoCuerpo extends javax.swing.JFrame {
     public String getTipo(){
         return this.tipoCuerpo;
     }
+    
     /**
      * @param args the command line arguments
      */

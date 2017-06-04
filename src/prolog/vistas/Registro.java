@@ -23,6 +23,7 @@ public class Registro extends javax.swing.JFrame {
      */
     
     private String tipoCuerpo;
+    testTipoCuerpo test;
     
     public Registro() {
         this.tipoCuerpo="";
@@ -203,9 +204,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // Se manda a llamar el cuestionario
-        testTipoCuerpo test = new testTipoCuerpo();
-        test.setVisible(true);
-        this.tipoCuerpo = test.getTipo();
+        this.test = new testTipoCuerpo();
+        this.test.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -213,6 +213,7 @@ public class Registro extends javax.swing.JFrame {
         try {
             XmlWriter writer;
             String txt = jTextPane1.getText();
+            this.tipoCuerpo = this.test.getTipo();
             if(validar()){
                 writer = new XmlWriter("./src/Recursos/Usuarios/"+txt+".xml");
                 writer.add("nombre", txt);
@@ -240,6 +241,7 @@ public class Registro extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Se detectó un error al generar el registro, verifique que realizó el test");
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
@@ -258,8 +260,8 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingresa tu tipo de plan");
         else if(jComboBox3.getSelectedIndex() == 0)
             JOptionPane.showMessageDialog(null,"Ingresa tu sexo");
-        //else if(this.tipoCuerpo.isEmpty())
-        //    JOptionPane.showMessageDialog(null,"No haz realizado correctamente el test");
+        else if(this.tipoCuerpo.isEmpty())
+            JOptionPane.showMessageDialog(null,"No haz realizado correctamente el test");
         else
             return true;
         return false;
