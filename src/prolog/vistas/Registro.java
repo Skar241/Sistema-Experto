@@ -20,6 +20,9 @@ public class Registro extends javax.swing.JFrame {
     /**
      * Creates new form Registro
      */
+    
+    private String tipoCuerpo;
+    
     public Registro() {
         initComponents();
     }
@@ -200,6 +203,7 @@ public class Registro extends javax.swing.JFrame {
         // Se manda a llamar el cuestionario
         testTipoCuerpo test = new testTipoCuerpo();
         test.setVisible(true);
+        this.tipoCuerpo = test.getTipo();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -239,6 +243,8 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingresa tu tipo de plan");
         else if(jComboBox3.getSelectedIndex() == 0)
             JOptionPane.showMessageDialog(null,"Ingresa tu sexo");
+        else if(this.tipoCuerpo.isEmpty())
+            JOptionPane.showMessageDialog(null,"No haz realizado correctamente el test");
         else
             return true;
         return false;

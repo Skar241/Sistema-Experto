@@ -16,6 +16,8 @@ public class testTipoCuerpo extends javax.swing.JFrame {
     /**
      * Creates new form testTipoCuerpo
      */
+    private String tipoCuerpo;
+    
     public testTipoCuerpo() {
         initComponents();
     }
@@ -446,14 +448,20 @@ public class testTipoCuerpo extends javax.swing.JFrame {
             
             if(ejecutar.hasSolution()){
                 resTipoCuerpo.setText("Tipo de cuerpo " + ejecutar.oneSolution().get("X").toString());
+                this.tipoCuerpo = ejecutar.oneSolution().get("X").toString();
             }
-            else
+            else{
                 System.out.println("No econtró nada");
+                this.tipoCuerpo = "mesomorfo";
+            }
         }catch(Exception e){
         }
         
     }//GEN-LAST:event_enviarDatosActionPerformed
 
+    public String getTipo(){
+        return this.tipoCuerpo;
+    }
     /**
      * @param args the command line arguments
      */
