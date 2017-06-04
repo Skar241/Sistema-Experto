@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
+import prolog.conectores.XmlReader;
 import prolog.conectores.XmlWriter;
 
 /**
@@ -220,7 +221,7 @@ public class Registro extends javax.swing.JFrame {
                 writer.add("peso",jTextPane3.getText());
                 writer.add("altura",jTextPane4.getText());
                 writer.add("disponibilidad",Integer.toString(jComboBox1.getSelectedIndex()));
-                writer.add("rutinaSemanal","rutina"+Integer.toString(jComboBox1.getSelectedIndex())+"D");
+                writer.add("rutinaSemanal","rutina"+Integer.toString(jComboBox1.getSelectedIndex()+2)+"D");
                 writer.add("plan",Integer.toString(jComboBox2.getSelectedIndex()));
                 writer.add("tipocuerpo",this.tipoCuerpo);
                 writer.add("rutinaAnterior","0");
@@ -230,6 +231,9 @@ public class Registro extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
                     Principal prin = new Principal();
                     prin.setVisible(true);
+                    XmlReader reader = new XmlReader("./src/Recursos/Usuarios/"+txt+".xml");
+                    JOptionPane.showMessageDialog(null,"Bienvenido "+txt);
+                    prin.iniciarValores(txt, reader);
                 }
                 else
                     JOptionPane.showMessageDialog(null,"Se detectó un error al generar el registro");
