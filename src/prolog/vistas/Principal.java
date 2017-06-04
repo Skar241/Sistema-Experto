@@ -159,6 +159,7 @@ public class Principal extends javax.swing.JFrame {
         
         try{
         String rutinas = xml.read("rutinaSemanal");
+        rutinas = rutinas.replace("\n", "");
         XmlReader xmlR = new XmlReader("./src/Recursos/Rutinas/" + rutinas + ".xml");
         String dia = xmlR.read("dia" + rutinaH);
         System.out.println(dia);
