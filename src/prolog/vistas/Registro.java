@@ -24,6 +24,7 @@ public class Registro extends javax.swing.JFrame {
     private String tipoCuerpo;
     
     public Registro() {
+        this.tipoCuerpo="";
         initComponents();
     }
 
@@ -104,7 +105,7 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Mujer", "Hombre" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Hombre", "Mujer" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,6 +216,16 @@ public class Registro extends javax.swing.JFrame {
                 writer = new XmlWriter("./src/Recursos/Usuarios/"+txt+".xml");
                 writer.add("nombre", txt);
                 writer.add("edad", jTextPane2.getText());
+                writer.add("sexo",Integer.toString(jComboBox3.getSelectedIndex()));
+                writer.add("peso",jTextPane3.getText());
+                writer.add("altura",jTextPane4.getText());
+                writer.add("disponibilidad",Integer.toString(jComboBox1.getSelectedIndex()));
+                writer.add("rutinaSemanal","rutina"+Integer.toString(jComboBox1.getSelectedIndex())+"D");
+                writer.add("plan",Integer.toString(jComboBox2.getSelectedIndex()));
+                writer.add("tipocuerpo",this.tipoCuerpo);
+                writer.add("rutinaAnterior","0");
+               
+                
                 if(writer.write()){
                     JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
                     Principal prin = new Principal();
@@ -243,8 +254,8 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingresa tu tipo de plan");
         else if(jComboBox3.getSelectedIndex() == 0)
             JOptionPane.showMessageDialog(null,"Ingresa tu sexo");
-        else if(this.tipoCuerpo.isEmpty())
-            JOptionPane.showMessageDialog(null,"No haz realizado correctamente el test");
+        //else if(this.tipoCuerpo.isEmpty())
+        //    JOptionPane.showMessageDialog(null,"No haz realizado correctamente el test");
         else
             return true;
         return false;
