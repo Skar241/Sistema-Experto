@@ -5,6 +5,9 @@
  */
 package prolog.vistas;
 
+import org.jpl7.Query;
+import prolog.conectores.XmlReader;
+
 /**
  *
  * @author Antonio
@@ -31,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        rutinaDia = new javax.swing.JTextArea();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
 
@@ -44,9 +47,9 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Rutina del Día");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        rutinaDia.setColumns(20);
+        rutinaDia.setRows(5);
+        jScrollPane1.setViewportView(rutinaDia);
 
         jToggleButton2.setText("Dieta del Día");
 
@@ -127,17 +130,55 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+                
             }
         });
+        
     }
 
+    public void iniciarValores(String usuario, XmlReader xml ){
+        
+        String tipoPlan = xml.read("plan");
+        String disp1 = xml.read("disponibilidad");
+        
+        String rutinaA = xml.read("rutinaAnterior"); //Ultima rutina hecha
+        int disp = 0;
+        int rutinaH= 0;
+        try {
+            disp = Integer.valueOf(disp1);
+            rutinaH = Integer.valueOf(rutinaA);
+        }catch (NumberFormatException e){
+            System.out.println("not a number"); 
+        } 
+                
+        rutinaH ++;
+        if(rutinaH > disp)  //Si ya hizo todoas las rutinas semanales, reiniciamos.
+            rutinaH = 1;
+        
+        //Consultamos rutina actual...
+        
+        try{
+        String rutinas = xml.read("rutinaSemanal");
+        XmlReader xmlR = new XmlReader("./src/Recursos/Rutinas/" + rutinas + ".xml");
+        String dia = xmlR.read("dia" + rutinaH);
+        System.out.println(dia);
+        }
+        catch(Exception e){
+            
+        }
+        //Fin de consulta de rutina actual...
+                
+        
+                
+        rutinaDia.setText("Rutina" + usuario + "\t Tu rutina es: " + tipoPlan + "\nHoy te toca:" + rutinaH);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JTextArea rutinaDia;
     // End of variables declaration//GEN-END:variables
 }

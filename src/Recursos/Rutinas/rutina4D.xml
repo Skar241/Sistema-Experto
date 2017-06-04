@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rutina4D>
+    <dia1>
+        <musculo1>pecho</musculo1>
+        <musculo2>triceps</musculo2>
+    </dia1>
+    <dia2>
+        <musculo1>espalda</musculo1>
+        <musculo2>biceps</musculo2>
+    </dia2>
+    <dia3>
+        <musculo1>pierna</musculo1>
+    </dia3>
+    <dia4>
+        <musculo1>hombro</musculo1>
+    </dia4>
+</rutina4D>

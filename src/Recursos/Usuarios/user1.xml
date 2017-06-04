@@ -6,6 +6,8 @@
     <peso>100</peso>
     <altura>50</altura>
     <disponibilidad>3</disponibilidad>
+    <rutinaSemanal>rutina3D</rutinaSemanal>
     <plan>Semestral</plan>
-    <tipocuerpo>ectomorfo</tipocuerpo>
+    <tipocuerpo>ectoorfo</tipocuerpo>
+    <rutinaAnterior>0</rutinaAnterior>
 </usuario>
