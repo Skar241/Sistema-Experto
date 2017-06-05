@@ -8,12 +8,20 @@ package prolog.vistas;
 import org.jpl7.Query;
 import prolog.conectores.XmlReader;
 
+
+
 /**
  *
  * @author Antonio
  */
 public class Principal extends javax.swing.JFrame {
 
+    private static String user;
+    private static XmlReader xmlUser;
+    private static int tipoPlan = 0;
+    private static int rutinaH = 0; //Rutina actual
+    private static int disponibilidad = 0; //Dias a la semana
+    private static String musculosDia = "";
     /**
      * Creates new form Principal
      */
@@ -31,73 +39,101 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        verDetalleRutinas = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        rutinaDia = new javax.swing.JTextArea();
+        mostrarRutinaDia = new javax.swing.JTextArea();
         jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        registroActividad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Bienvenido a SE-Fitness");
 
-        jToggleButton1.setText("Detalles de la Rutina");
+        verDetalleRutinas.setText("Detalles de la Rutina");
+        verDetalleRutinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verDetalleRutinasActionPerformed(evt);
+            }
+        });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Rutina del Día");
 
-        rutinaDia.setColumns(20);
-        rutinaDia.setRows(5);
-        jScrollPane1.setViewportView(rutinaDia);
+        mostrarRutinaDia.setColumns(20);
+        mostrarRutinaDia.setRows(5);
+        jScrollPane1.setViewportView(mostrarRutinaDia);
 
         jToggleButton2.setText("Dieta del Día");
 
-        jToggleButton3.setText("Ver Plan");
+        registroActividad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        registroActividad.setText("Registrar rutina actual");
+        registroActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroActividadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(118, 118, 118))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(96, 96, 96))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jToggleButton3)
-                            .addGap(14, 14, 14)
-                            .addComponent(jToggleButton2)
-                            .addGap(45, 45, 45)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(verDetalleRutinas, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel1)))
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(registroActividad)
+                        .addGap(110, 110, 110))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(registroActividad)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3))
-                .addGap(58, 58, 58))
+                    .addComponent(verDetalleRutinas)
+                    .addComponent(jToggleButton2))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActividadActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_registroActividadActionPerformed
+
+    private void verDetalleRutinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetalleRutinasActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_verDetalleRutinasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,21 +174,22 @@ public class Principal extends javax.swing.JFrame {
 
     public void iniciarValores(String usuario, XmlReader xml ){
         
+        user = usuario;
+        xmlUser = xml;
+        
         String tipoPlan = xml.read("plan");
         String disp1 = xml.read("disponibilidad");
-        
         String rutinaA = xml.read("rutinaAnterior"); //Ultima rutina hecha
-        int disp = 0;
-        int rutinaH= 0;
+        
         try {
-            disp = Integer.valueOf(disp1);
+            disponibilidad = Integer.valueOf(disp1);
             rutinaH = Integer.valueOf(rutinaA);
         }catch (NumberFormatException e){
             System.out.println("not a number"); 
         } 
                 
         rutinaH ++;
-        if(rutinaH > disp)  //Si ya hizo todoas las rutinas semanales, reiniciamos.
+        if(rutinaH > disponibilidad)  //Si ya hizo todoas las rutinas semanales, reiniciamos.
             rutinaH = 1;
         
         //Consultamos rutina actual...
@@ -161,25 +198,27 @@ public class Principal extends javax.swing.JFrame {
             String rutinas = xml.read("rutinaSemanal");
             rutinas = rutinas.replace("\n", "");
             XmlReader xmlR = new XmlReader("./src/Recursos/Rutinas/" + rutinas + ".xml");
-            String dia = xmlR.read("dia" + rutinaH);
-            System.out.println(dia);
+            musculosDia = xmlR.read("dia" + rutinaH);
+            //System.out.println("Muscuslos:" + dia);
         }
         catch(Exception e){
             
         }
-        //Fin de consulta de rutina actual...
+        //Fin de consulta de rutina actual...    
                 
-        
-                
-        rutinaDia.setText("Rutina" + usuario + "\t Tu rutina es: " + tipoPlan + "\nHoy te toca:" + rutinaH);
+        mostrarRutinaDia.setText("Hoy te toca:" + musculosDia);
     }
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JTextArea rutinaDia;
+    private javax.swing.JTextArea mostrarRutinaDia;
+    private javax.swing.JButton registroActividad;
+    private javax.swing.JToggleButton verDetalleRutinas;
     // End of variables declaration//GEN-END:variables
 }

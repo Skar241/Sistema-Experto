@@ -232,8 +232,10 @@ public class Registro extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
                     Principal prin = new Principal();
                     prin.setVisible(true);
+
                     XmlReader reader = new XmlReader("./src/Recursos/Usuarios/"+txt+".xml");
                     JOptionPane.showMessageDialog(null,"Bienvenido "+txt);
+//>>>>>>> 62e645f352d2758b66f8aec5c0f10f0eaa401d81
                     prin.iniciarValores(txt, reader);
                 }
                 else
