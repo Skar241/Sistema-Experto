@@ -57,8 +57,6 @@ public class Registro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
         jToggleButton2 = new javax.swing.JToggleButton();
         jComboBox3 = new javax.swing.JComboBox();
 
@@ -96,10 +94,6 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Tipo de plan:");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciona una opción", "Mensual", "Semestral", "Anual" }));
-
         jToggleButton2.setText("Registrar");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,10 +122,6 @@ public class Registro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,11 +178,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
                     .addComponent(jToggleButton2))
@@ -223,7 +209,6 @@ public class Registro extends javax.swing.JFrame {
                 writer.add("altura",jTextPane4.getText());
                 writer.add("disponibilidad",Integer.toString(jComboBox1.getSelectedIndex()));
                 writer.add("rutinaSemanal","rutina"+Integer.toString(jComboBox1.getSelectedIndex()+2)+"D");
-                writer.add("plan",Integer.toString(jComboBox2.getSelectedIndex()));
                 writer.add("tipocuerpo",this.tipoCuerpo);
                 writer.add("rutinaAnterior","0");
                
@@ -258,8 +243,6 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingresa tu altura con números");
         else if(jComboBox1.getSelectedIndex() == 0)
             JOptionPane.showMessageDialog(null,"Ingresa la cantidad de días que harás ejercicio");
-        else if(jComboBox2.getSelectedIndex() == 0)
-            JOptionPane.showMessageDialog(null,"Ingresa tu tipo de plan");
         else if(jComboBox3.getSelectedIndex() == 0)
             JOptionPane.showMessageDialog(null,"Ingresa tu sexo");
         else if(this.tipoCuerpo.isEmpty())
@@ -306,7 +289,6 @@ public class Registro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -315,7 +297,6 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

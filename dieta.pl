@@ -58,7 +58,12 @@ grupo5('Pasta con Mariscos',287).
 $ALT:	Altura en pulgadas
 %EDAD:	Edad en anios
 %NUM:	Numeros de retorno
+%MET:	Meta que tiene el usuario
 
 cal_mujeres(PESO,ALT,EDAD,NUM):-NUM is 655 + (4.35 * PESO) + (4.7 * ALT) - (4.7 * EDAD).
 cal_hombres(PESO,ALT,EDAD,NUM):-NUM is 66 + (6.23 * PESO) + (12.7 * ALT) - (6.8 * EDAD).
-segundomes(SEX,PESO,ALT,EDAD,NUM):-(SEX == '1' -> cal_hombres(PESO,ALT,EDAD,NUM); cal_mujeres(PESO,ALT,EDAD,NUM)).
+calcula_cals(SEX,PESO,ALT,EDAD,NUM):-(SEX == 1 -> cal_hombres(PESO,ALT,EDAD,NUM); cal_mujeres(PESO,ALT,EDAD,NUM)).
+factor(ACFIS,X):-(ACFIS == 1 -> X = 1.375;(ACFIS == 4 -> X = 1.7; X = 1.55)).
+meta(MET,X):-(MET == 1 -> X = -500;(MET == 2 -> X = 0; X = 250)).
+segundom_mes(MET,ACFIS,SEX,PESO,ALT,EDAD,NUM):- factor(ACFIS,Z),meta(MET,X),calcula_cals(SEX,PESO,ALT,EDAD,Y),NUM is ((Z*Y)+X).
+prueba(NUM):grupo2(X,Y),grupo1(A,B),NUM is Y+B.
