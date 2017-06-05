@@ -93,10 +93,13 @@ public class LogIn extends javax.swing.JFrame {
         else{
             XmlReader reader = new XmlReader("./src/Recursos/Usuarios/"+txt+".xml");
             String data = reader.read("nombre");
-            JOptionPane.showMessageDialog(null,"Bienvenido "+data);
-            Principal prin = new Principal();
-            prin.setVisible(true);
-            prin.iniciarValores(data, reader);
+            if (data.isEmpty())
+                JOptionPane.showMessageDialog(null,"No se encontró registro de: "+txt);
+            else{
+                Principal prin = new Principal();
+                prin.setVisible(true);
+                prin.iniciarValores(data, reader);
+            }
         }
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed

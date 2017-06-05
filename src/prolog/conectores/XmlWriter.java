@@ -10,7 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -23,9 +22,9 @@ import org.w3c.dom.Element;
  */
 public class XmlWriter {
     
-    private String file;
-    private Document doc;
-    private Element root;
+    private final String file;
+    private final Document doc;
+    private final Element root;
     
     public XmlWriter(String file) throws ParserConfigurationException{
         this.file = file;
@@ -52,6 +51,20 @@ public class XmlWriter {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(this.doc);
             StreamResult result = new StreamResult(new File(this.file));
+            transformer.transform(source, result);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    
+    public static boolean write(Document doc,String file){
+        try{
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(file));
             transformer.transform(source, result);
             return true;
         }

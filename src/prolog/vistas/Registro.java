@@ -21,7 +21,12 @@ public class Registro extends javax.swing.JFrame {
     /**
      * Creates new form Registro
      */
+    
+    private String tipoCuerpo;
+    testTipoCuerpo test;
+    
     public Registro() {
+        this.tipoCuerpo="";
         initComponents();
     }
 
@@ -102,7 +107,7 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Mujer", "Hombre" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Hombre", "Mujer" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,8 +204,8 @@ public class Registro extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // Se manda a llamar el cuestionario
-        testTipoCuerpo test = new testTipoCuerpo();
-        test.setVisible(true);
+        this.test = new testTipoCuerpo();
+        this.test.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -208,15 +213,29 @@ public class Registro extends javax.swing.JFrame {
         try {
             XmlWriter writer;
             String txt = jTextPane1.getText();
+            this.tipoCuerpo = this.test.getTipo();
             if(validar()){
                 writer = new XmlWriter("./src/Recursos/Usuarios/"+txt+".xml");
                 writer.add("nombre", txt);
                 writer.add("edad", jTextPane2.getText());
+                writer.add("sexo",Integer.toString(jComboBox3.getSelectedIndex()));
+                writer.add("peso",jTextPane3.getText());
+                writer.add("altura",jTextPane4.getText());
+                writer.add("disponibilidad",Integer.toString(jComboBox1.getSelectedIndex()));
+                writer.add("rutinaSemanal","rutina"+Integer.toString(jComboBox1.getSelectedIndex()+2)+"D");
+                writer.add("plan",Integer.toString(jComboBox2.getSelectedIndex()));
+                writer.add("tipocuerpo",this.tipoCuerpo);
+                writer.add("rutinaAnterior","0");
+               
+                
                 if(writer.write()){
                     JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
                     Principal prin = new Principal();
                     prin.setVisible(true);
-                    XmlReader reader = new XmlReader("./src/Recursos/Usuarios/" + txt + ".xml");
+
+                    XmlReader reader = new XmlReader("./src/Recursos/Usuarios/"+txt+".xml");
+                    JOptionPane.showMessageDialog(null,"Bienvenido "+txt);
+//>>>>>>> 62e645f352d2758b66f8aec5c0f10f0eaa401d81
                     prin.iniciarValores(txt, reader);
                 }
                 else
@@ -224,6 +243,7 @@ public class Registro extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Se detectó un error al generar el registro, verifique que realizó el test");
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
@@ -242,6 +262,8 @@ public class Registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingresa tu tipo de plan");
         else if(jComboBox3.getSelectedIndex() == 0)
             JOptionPane.showMessageDialog(null,"Ingresa tu sexo");
+        else if(this.tipoCuerpo.isEmpty())
+            JOptionPane.showMessageDialog(null,"No haz realizado correctamente el test");
         else
             return true;
         return false;

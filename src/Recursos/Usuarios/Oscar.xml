@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><usuario><nombre>Oscar</nombre><edad>12</edad></usuario>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><usuario><nombre>Oscar</nombre><edad>12</edad><sexo>1</sexo><peso>12</peso><altura>12</altura><disponibilidad>1</disponibilidad><rutinaSemanal>rutina3D</rutinaSemanal><plan>1</plan><tipocuerpo>mesomorfo</tipocuerpo><rutinaAnterior>0</rutinaAnterior></usuario>

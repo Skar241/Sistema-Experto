@@ -21,8 +21,10 @@ import org.xml.sax.SAXException;
 public class XmlReader {
 
     private Document document;
+    private String dir;
     
     public XmlReader(String dir){
+        this.dir = dir;
         init(dir);
     }
     
@@ -53,5 +55,18 @@ public class XmlReader {
             System.out.println(e);
         }
         return usr;
+    }
+    
+    public void replace(String label,String value){
+        try{
+            for(int i = 0; i < this.document.getElementsByTagName(label).getLength();i++){
+                this.document.getElementsByTagName(label).item(i).setTextContent(value);
+            }
+        }
+        catch(Exception e){}
+    }
+    
+    public void save(){
+        XmlWriter.write(this.document, this.dir);
     }
 }
