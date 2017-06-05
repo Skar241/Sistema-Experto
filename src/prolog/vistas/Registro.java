@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
+import prolog.conectores.XmlReader;
 import prolog.conectores.XmlWriter;
 
 /**
@@ -215,6 +216,8 @@ public class Registro extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Regitro completado satisfactoriamente");
                     Principal prin = new Principal();
                     prin.setVisible(true);
+                    XmlReader reader = new XmlReader("./src/Recursos/Usuarios/" + txt + ".xml");
+                    prin.iniciarValores(txt, reader);
                 }
                 else
                     JOptionPane.showMessageDialog(null,"Se detectó un error al generar el registro");
