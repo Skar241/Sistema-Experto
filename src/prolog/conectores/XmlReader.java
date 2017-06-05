@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 public class XmlReader {
 
     private Document document;
-    private String dir;
+    private final String dir;
     
     public XmlReader(String dir){
         this.dir = dir;
