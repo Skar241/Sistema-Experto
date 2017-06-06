@@ -348,6 +348,14 @@ public class DetalleRutinas extends javax.swing.JFrame {
         cambiarMusculo();
     }//GEN-LAST:event_botonAbdominalesActionPerformed
 
+    public void iniciarDetalles(String musculo) {                                                 
+        // TODO add your handling code here:
+        this.musculo = musculo;
+        numEjercicio = 1;
+        cambiarMusculo();
+    }                                                
+
+    
     public void cambiarMusculo(){
 
         try{
@@ -375,6 +383,8 @@ public class DetalleRutinas extends javax.swing.JFrame {
             System.out.println("Error al ejecutar consulta de query BC");
         }
     }
+    
+    
     
     
     /**

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<usuario>
+    <nombre>hugo</nombre>
+    <edad>25</edad>
+    <sexo>1</sexo>
+    <peso>65</peso>
+    <altura>70</altura>
+    <disponibilidad>2</disponibilidad>
+    <rutinaSemanal>rutina4D</rutinaSemanal>
+    <tipocuerpo>ectomorfo</tipocuerpo>
+    <rutinaAnterior>0</rutinaAnterior>
+</usuario>

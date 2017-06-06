@@ -7,6 +7,7 @@ package prolog.vistas;
 
 import org.jpl7.Query;
 import prolog.conectores.XmlReader;
+import prolog.conectores.XmlWriter;
 
 
 
@@ -18,10 +19,10 @@ public class Principal extends javax.swing.JFrame {
 
     private static String user;
     private static XmlReader xmlUser;
-    private static int tipoPlan = 0;
     private static int rutinaH = 0; //Rutina actual
     private static int disponibilidad = 0; //Dias a la semana
     private static String musculosDia = "";
+    private static String musculo ="";
     /**
      * Creates new form Principal
      */
@@ -130,18 +131,128 @@ public class Principal extends javax.swing.JFrame {
 
     private void registroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActividadActionPerformed
         // TODO add your handling code here:
+                        
+        //Leemos los datos del xml
+        String nombreR = xmlUser.read("nombre");
+        String edadR = xmlUser.read("edad");
+        String sexoR = xmlUser.read("sexo");
+        String pesoR = xmlUser.read("peso");
+        String alturaR = xmlUser.read("altura");
+        String dispR = xmlUser.read("disponibilidad");
+        String rutinaSR = xmlUser.read("rutinaSemanal");
+        String tipoCR = xmlUser.read("tipocuerpo");
+        String rutinaAR = xmlUser.read("rutinaAnterior");
+        String abdomenR = xmlUser.read("sigueAbdomen"); //Estatus del abdomen
+        
+        nombreR = nombreR.trim();
+        edadR = edadR.trim();
+        sexoR = sexoR.trim();
+        pesoR = pesoR.trim();
+        alturaR = alturaR.trim();
+        dispR = dispR.trim();
+        rutinaSR = rutinaSR.trim();
+        tipoCR = tipoCR.trim();
+        rutinaAR = rutinaAR.trim();
+        abdomenR = abdomenR.trim();
+        
+        System.out.println("Usuario:");
+        System.out.println(nombreR);
+        System.out.println(edadR);
+        System.out.println(sexoR);
+        System.out.println(pesoR);
+        System.out.println(alturaR);
+        System.out.println(dispR);
+        System.out.println(rutinaSR);
+        System.out.println(tipoCR);
+        System.out.println(rutinaAR);
+        System.out.println("Rutina actual: " + rutinaH);
+        System.out.println("Abdomen: " + abdomenR);
+        //Fin de lectura de datos del xml
+        
+        //Escritura del nuevo archivo
+        XmlWriter writer;
+        try{
+        writer = new XmlWriter("./src/Recursos/Usuarios/" + nombreR + ".xml");
+        writer.add("nombre", nombreR);
+        writer.add("edad", edadR);
+        writer.add("sexo", sexoR);
+        writer.add("peso", pesoR);
+        writer.add("altura", alturaR);
+        writer.add("disponibilidad", dispR);
+        writer.add("rutinaSemanal", rutinaSR);
+        writer.add("tipocuerpo", tipoCR);
+        writer.add("rutinaAnterior",String.valueOf(rutinaH));
+        
+        int abdomen = Integer.valueOf(abdomenR);
+        if ( abdomen == 1)
+            writer.add("sigueAbdomen", "0");
+        else
+            writer.add("sigueAbdomen", "1");
         
         
+        if(writer.write()){
+            mostrarRutinaDia.setText("Se registró exitosamente tu rutina actual! \n" + "Te espero mañana");
+            System.out.println("Se registró el día: " + rutinaH);
+        }
+        else
+            mostrarRutinaDia.setText("No se registró tu rutina! \n" + "Intenta otra vez por favor");
+        } catch(Exception e){
+            System.out.println("Error al registrar rutina...");
+        }
+        //Fin de escritura del nuevo archivo
+
     }//GEN-LAST:event_registroActividadActionPerformed
 
     private void verDetalleRutinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetalleRutinasActionPerformed
         // TODO add your handling code here:
-        
+        DetalleRutinas detalles = new DetalleRutinas();
+        detalles.setVisible(true);       
         
     }//GEN-LAST:event_verDetalleRutinasActionPerformed
 
+    private void mostrarDatosUser (){
+            
+        //Leemos los datos del xml
+        String nombreR = xmlUser.read("nombre");
+        String edadR = xmlUser.read("edad");
+        String sexoR = xmlUser.read("sexo");
+        String pesoR = xmlUser.read("peso");
+        String alturaR = xmlUser.read("altura");
+        String dispR = xmlUser.read("disponibilidad");
+        String rutinaSR = xmlUser.read("rutinaSemanal");
+        String tipoCR = xmlUser.read("tipocuerpo");
+        String rutinaAR = xmlUser.read("rutinaAnterior");
+        String abdomenR = xmlUser.read("sigueAbdomen");
+        
+        nombreR = nombreR.trim();
+        edadR = edadR.trim();
+        sexoR = sexoR.trim();
+        pesoR = pesoR.trim();
+        alturaR = alturaR.trim();
+        dispR = dispR.trim();
+        rutinaSR = rutinaSR.trim();
+        tipoCR = tipoCR.trim();
+        rutinaAR = rutinaAR.trim();
+        abdomenR = abdomenR.trim();
+        
+        System.out.println("Usuario:");
+        System.out.println(nombreR);
+        System.out.println(edadR);
+        System.out.println(sexoR);
+        System.out.println(pesoR);
+        System.out.println(alturaR);
+        System.out.println(dispR);
+        System.out.println(rutinaSR);
+        System.out.println(tipoCR);
+        System.out.println("Rutina anterior:" + rutinaAR);
+        System.out.println("Rutina actual: " + rutinaH);
+        System.out.println("Abdomen: " + abdomenR);
+        //Fin de lectura de datos del xml
+    
+    }
+    
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        //
+        // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
@@ -186,36 +297,73 @@ public class Principal extends javax.swing.JFrame {
         user = usuario;
         xmlUser = xml;
         
-        String tipoPlan = xml.read("plan");
+        mostrarDatosUser();
         String disp1 = xml.read("disponibilidad");
         String rutinaA = xml.read("rutinaAnterior"); //Ultima rutina hecha
+        String abdomen = xml.read("sigueAbdomen"); //Estatus del abdomen
+        String tipoCuerpo = xml.read("tipocuerpo"); //Tipo del cuerpo
+        String meta ="";
+        
+        int estAbd = 0;
         
         try {
+            disp1 = disp1.trim();
+            rutinaA = rutinaA.trim();
+            abdomen = abdomen.trim();
             disponibilidad = Integer.valueOf(disp1);
             rutinaH = Integer.valueOf(rutinaA);
+            estAbd = Integer.valueOf(abdomen);
+            
         }catch (NumberFormatException e){
             System.out.println("not a number"); 
         } 
-                
+        
         rutinaH ++;
+        System.out.println("Incremento de rutinaA: " + rutinaH);
         if(rutinaH > disponibilidad)  //Si ya hizo todoas las rutinas semanales, reiniciamos.
             rutinaH = 1;
         
         //Consultamos rutina actual...
-        
         try{
             String rutinas = xml.read("rutinaSemanal");
             rutinas = rutinas.replace("\n", "");
             XmlReader xmlR = new XmlReader("./src/Recursos/Rutinas/" + rutinas + ".xml");
             musculosDia = xmlR.read("dia" + rutinaH);
-            //System.out.println("Muscuslos:" + dia);
         }
         catch(Exception e){
             
         }
         //Fin de consulta de rutina actual...    
-                
-        mostrarRutinaDia.setText("Hoy te toca:" + musculosDia);
+        
+        //Consultamos su meta por tipo de cuerpo
+        String mensaje = "";
+        try{
+            String conexion= "consult('bd.pl')";
+            Query con= new Query(conexion);
+            System.out.println(conexion + " " + (con.hasMoreSolutions()? "Aceptado": "False"));
+            
+            String consulta = "meta(" + tipoCuerpo + ",X).";
+            Query ejecutar = new Query(consulta);
+            
+            if(ejecutar.hasSolution()){
+                meta= ejecutar.oneSolution().get("X").toString();
+                System.out.println("Tipo de cuerpo-mensaje: " + tipoCuerpo + "-" + meta);
+                XmlReader reader = new XmlReader("./src/Recursos/Metas/metas.xml");
+                mensaje = reader.read(meta);
+            }
+            else{
+                System.out.println("No econtró la meta para el tipo de cuerpo");
+            }
+            
+        }catch(Exception e){
+        }
+        //Fin de consulta de meta por tipo de cuerpo
+        
+        if(estAbd == 1)
+            mostrarRutinaDia.setText("Hoy te toca:" + musculosDia + "y también: " + "abdomen\n\n" + mensaje );
+        else
+            mostrarRutinaDia.setText("Hoy te toca:" + musculosDia + "\n\n" + mensaje);
+        
     }
     
     

@@ -17,11 +17,6 @@ rutinaSemanal(4, rutina4D).
 rutinaSemanal(5, rutina5D).
 rutinaSemanal(6, rutina6D).
 
-%********* Recomendacion *********%
-recomendacion(aumentarMM, masPeso).
-recomendacion(bajarPeso, hacerCardio).
-recomendacion(definicion,  masRepeticiones).
-
 %********* Ejercicios por músculo *********%
 ejerciciosMusculos(pecho, ejerciciosP).
 ejerciciosMusculos(espalda, ejerciciosE).
