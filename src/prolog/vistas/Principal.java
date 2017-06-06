@@ -7,6 +7,7 @@ package prolog.vistas;
 
 import org.jpl7.Query;
 import prolog.conectores.XmlReader;
+import prolog.conectores.XmlWriter;
 
 
 
@@ -18,10 +19,10 @@ public class Principal extends javax.swing.JFrame {
 
     private static String user;
     private static XmlReader xmlUser;
-    private static int tipoPlan = 0;
     private static int rutinaH = 0; //Rutina actual
     private static int disponibilidad = 0; //Dias a la semana
     private static String musculosDia = "";
+    private static String musculo ="";
     /**
      * Creates new form Principal
      */
@@ -66,6 +67,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(mostrarRutinaDia);
 
         jToggleButton2.setText("Dieta del Día");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         registroActividad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         registroActividad.setText("Registrar rutina actual");
@@ -80,44 +86,42 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(verDetalleRutinas, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(58, 58, 58)
-                                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel1)))
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(registroActividad)
-                        .addGap(110, 110, 110))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(registroActividad)
+                                    .addGap(191, 191, 191))))))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(registroActividad)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(verDetalleRutinas)
-                    .addComponent(jToggleButton2))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(registroActividad)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToggleButton2)
+                    .addComponent(verDetalleRutinas))
+                .addGap(107, 107, 107))
         );
 
         pack();
@@ -125,15 +129,129 @@ public class Principal extends javax.swing.JFrame {
 
     private void registroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActividadActionPerformed
         // TODO add your handling code here:
+                        
+        //Leemos los datos del xml
+        String nombreR = xmlUser.read("nombre");
+        String edadR = xmlUser.read("edad");
+        String sexoR = xmlUser.read("sexo");
+        String pesoR = xmlUser.read("peso");
+        String alturaR = xmlUser.read("altura");
+        String dispR = xmlUser.read("disponibilidad");
+        String rutinaSR = xmlUser.read("rutinaSemanal");
+        String tipoCR = xmlUser.read("tipocuerpo");
+        String rutinaAR = xmlUser.read("rutinaAnterior");
+        String abdomenR = xmlUser.read("sigueAbdomen"); //Estatus del abdomen
+        
+        nombreR = nombreR.trim();
+        edadR = edadR.trim();
+        sexoR = sexoR.trim();
+        pesoR = pesoR.trim();
+        alturaR = alturaR.trim();
+        dispR = dispR.trim();
+        rutinaSR = rutinaSR.trim();
+        tipoCR = tipoCR.trim();
+        rutinaAR = rutinaAR.trim();
+        abdomenR = abdomenR.trim();
+        
+        System.out.println("Usuario:");
+        System.out.println(nombreR);
+        System.out.println(edadR);
+        System.out.println(sexoR);
+        System.out.println(pesoR);
+        System.out.println(alturaR);
+        System.out.println(dispR);
+        System.out.println(rutinaSR);
+        System.out.println(tipoCR);
+        System.out.println(rutinaAR);
+        System.out.println("Rutina actual: " + rutinaH);
+        System.out.println("Abdomen: " + abdomenR);
+        //Fin de lectura de datos del xml
+        
+        //Escritura del nuevo archivo
+        XmlWriter writer;
+        try{
+        writer = new XmlWriter("./src/Recursos/Usuarios/" + nombreR + ".xml");
+        writer.add("nombre", nombreR);
+        writer.add("edad", edadR);
+        writer.add("sexo", sexoR);
+        writer.add("peso", pesoR);
+        writer.add("altura", alturaR);
+        writer.add("disponibilidad", dispR);
+        writer.add("rutinaSemanal", rutinaSR);
+        writer.add("tipocuerpo", tipoCR);
+        writer.add("rutinaAnterior",String.valueOf(rutinaH));
+        
+        int abdomen = Integer.valueOf(abdomenR);
+        if ( abdomen == 1)
+            writer.add("sigueAbdomen", "0");
+        else
+            writer.add("sigueAbdomen", "1");
         
         
+        if(writer.write()){
+            mostrarRutinaDia.setText("Se registró exitosamente tu rutina actual! \n" + "Te espero mañana");
+            System.out.println("Se registró el día: " + rutinaH);
+        }
+        else
+            mostrarRutinaDia.setText("No se registró tu rutina! \n" + "Intenta otra vez por favor");
+        } catch(Exception e){
+            System.out.println("Error al registrar rutina...");
+        }
+        //Fin de escritura del nuevo archivo
+
     }//GEN-LAST:event_registroActividadActionPerformed
 
     private void verDetalleRutinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetalleRutinasActionPerformed
         // TODO add your handling code here:
-        
+        DetalleRutinas detalles = new DetalleRutinas();
+        detalles.setVisible(true);       
         
     }//GEN-LAST:event_verDetalleRutinasActionPerformed
+
+    private void mostrarDatosUser (){
+            
+        //Leemos los datos del xml
+        String nombreR = xmlUser.read("nombre");
+        String edadR = xmlUser.read("edad");
+        String sexoR = xmlUser.read("sexo");
+        String pesoR = xmlUser.read("peso");
+        String alturaR = xmlUser.read("altura");
+        String dispR = xmlUser.read("disponibilidad");
+        String rutinaSR = xmlUser.read("rutinaSemanal");
+        String tipoCR = xmlUser.read("tipocuerpo");
+        String rutinaAR = xmlUser.read("rutinaAnterior");
+        String abdomenR = xmlUser.read("sigueAbdomen");
+        
+        nombreR = nombreR.trim();
+        edadR = edadR.trim();
+        sexoR = sexoR.trim();
+        pesoR = pesoR.trim();
+        alturaR = alturaR.trim();
+        dispR = dispR.trim();
+        rutinaSR = rutinaSR.trim();
+        tipoCR = tipoCR.trim();
+        rutinaAR = rutinaAR.trim();
+        abdomenR = abdomenR.trim();
+        
+        System.out.println("Usuario:");
+        System.out.println(nombreR);
+        System.out.println(edadR);
+        System.out.println(sexoR);
+        System.out.println(pesoR);
+        System.out.println(alturaR);
+        System.out.println(dispR);
+        System.out.println(rutinaSR);
+        System.out.println(tipoCR);
+        System.out.println("Rutina anterior:" + rutinaAR);
+        System.out.println("Rutina actual: " + rutinaH);
+        System.out.println("Abdomen: " + abdomenR);
+        //Fin de lectura de datos del xml
+    
+    }
+    
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,36 +295,79 @@ public class Principal extends javax.swing.JFrame {
         user = usuario;
         xmlUser = xml;
         
-        String tipoPlan = xml.read("plan");
+        mostrarDatosUser();
         String disp1 = xml.read("disponibilidad");
         String rutinaA = xml.read("rutinaAnterior"); //Ultima rutina hecha
+        String abdomen = xml.read("sigueAbdomen"); //Estatus del abdomen
+        String tipoCuerpo = xml.read("tipocuerpo"); //Tipo del cuerpo
+        String meta ="";
+        
+        int estAbd = 0;
         
         try {
+            disp1 = disp1.trim();
+            rutinaA = rutinaA.trim();
+            abdomen = abdomen.trim();
             disponibilidad = Integer.valueOf(disp1);
             rutinaH = Integer.valueOf(rutinaA);
+            estAbd = Integer.valueOf(abdomen);
+            
         }catch (NumberFormatException e){
             System.out.println("not a number"); 
         } 
-                
+        
         rutinaH ++;
+        System.out.println("Incremento de rutinaA: " + rutinaH);
         if(rutinaH > disponibilidad)  //Si ya hizo todoas las rutinas semanales, reiniciamos.
             rutinaH = 1;
         
         //Consultamos rutina actual...
-        
         try{
             String rutinas = xml.read("rutinaSemanal");
             rutinas = rutinas.replace("\n", "");
             XmlReader xmlR = new XmlReader("./src/Recursos/Rutinas/" + rutinas + ".xml");
             musculosDia = xmlR.read("dia" + rutinaH);
-            //System.out.println("Muscuslos:" + dia);
         }
         catch(Exception e){
             
         }
         //Fin de consulta de rutina actual...    
-                
-        mostrarRutinaDia.setText("Hoy te toca:" + musculosDia);
+        
+        //Consultamos su meta por tipo de cuerpo
+        String mensaje = "";
+        try{
+            String conexion= "consult('bd.pl')";
+            Query con= new Query(conexion);
+            System.out.println(conexion + " " + (con.hasMoreSolutions()? "Aceptado": "False"));
+            
+            String consulta = "meta(" + tipoCuerpo + ",X).";
+            Query ejecutar = new Query(consulta);
+            
+            if(ejecutar.hasSolution()){
+                meta= ejecutar.oneSolution().get("X").toString();
+                //tipoCuerpo = tipoCuerpo.trim();
+                System.out.println("Tipo de cuerpo-mensaje: " + tipoCuerpo + "-" + meta);
+                XmlReader reader = new XmlReader("./src/Recursos/Metas/metas.xml");
+                mensaje = reader.read(meta);
+            }
+            else{
+                System.out.println("No econtró la meta para el tipo de cuerpo");
+            }
+            
+        }catch(Exception e){
+        }
+        //Fin de consulta de meta por tipo de cuerpo
+        tipoCuerpo = tipoCuerpo.trim();
+        
+        if(estAbd == 1)
+            mostrarRutinaDia.setText("Hoy te toca:" + musculosDia + "y también: " + "abdomen\n\n¡¡IMPORTANTE!!\n" + mensaje );
+        else{
+            if ( tipoCuerpo.equals("endomorfo"))
+                mostrarRutinaDia.setText("Hoy te toca:" + musculosDia + "Para bajar de peso has 30 minutos de cardio" + "\n\n¡¡IMPORTANTE!!\n" + mensaje);
+            else
+                mostrarRutinaDia.setText("Hoy te toca:" + musculosDia + "\n\n¡¡IMPORTANTE!!\n" + mensaje);
+        }
+        
     }
     
     

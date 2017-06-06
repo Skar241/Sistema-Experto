@@ -348,12 +348,20 @@ public class DetalleRutinas extends javax.swing.JFrame {
         cambiarMusculo();
     }//GEN-LAST:event_botonAbdominalesActionPerformed
 
+    public void iniciarDetalles(String musculo) {                                                 
+        // TODO add your handling code here:
+        this.musculo = musculo;
+        numEjercicio = 1;
+        cambiarMusculo();
+    }                                                
+
+    
     public void cambiarMusculo(){
 
         try{
             String conexion= "consult('bd.pl')";
             Query con= new Query(conexion);
-            System.out.println(conexion + " " + (con.hasMoreSolutions()? "Aceptado": "False"));
+            System.out.println(conexion + " " + (con.hasMoreSolutions()? "Consulta a BC correcta...": "Conexión a BC errónea en cambiarMusculo"));
             
             String consulta = "ejerciciosMusculos(" + musculo + ",X).";
             Query ejecutar = new Query(consulta);
@@ -375,6 +383,8 @@ public class DetalleRutinas extends javax.swing.JFrame {
             System.out.println("Error al ejecutar consulta de query BC");
         }
     }
+    
+    
     
     
     /**
