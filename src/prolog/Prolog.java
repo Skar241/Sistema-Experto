@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package prolog;
-import prolog.vistas.testTipoCuerpo;
+//import prolog.vistas.testTipoCuerpo;
 import org.jpl7.Query;
 import org.jpl7.Term;
 
@@ -27,8 +27,8 @@ public class Prolog {
         }
         
         
-        testTipoCuerpo test = new testTipoCuerpo();
-        test.setVisible(true);
+        //testTipoCuerpo test = new testTipoCuerpo();
+        //test.setVisible(true);
     }
     
 }

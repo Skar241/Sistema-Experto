@@ -5,8 +5,8 @@
  */
 package prolog;
 
-import prolog.vistas.LogIn;
-import prolog.vistas.Registro;
+//import prolog.vistas.LogIn;
+//import prolog.vistas.Registro;
 
 /**
  *
@@ -95,14 +95,14 @@ public class Interface extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         //Inicio de Sesión
-        LogIn log = new LogIn();
-        log.setVisible(true);
+        //LogIn log = new LogIn();
+        //log.setVisible(true);
         
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        Registro reg = new Registro();
-        reg.setVisible(true);
+        //Registro reg = new Registro();
+        //reg.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
