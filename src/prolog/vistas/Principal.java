@@ -66,6 +66,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(mostrarRutinaDia);
 
         jToggleButton2.setText("Dieta del Día");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         registroActividad.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         registroActividad.setText("Registrar rutina actual");
@@ -134,6 +139,10 @@ public class Principal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_verDetalleRutinasActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        //
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments

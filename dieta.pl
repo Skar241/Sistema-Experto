@@ -7,7 +7,7 @@ grupo1(CALS,X):-(CALS < 300 ->
 		 'Clara de huevo y plato Frutas 2',
 		 'Cereales Bowl',
 		 'Shakeology Shake',
-		 'Brindis de Maní Butter'
+		 'Brindis de Mani Butter'
 	];
 	X = ['Frutas y Requeson',
 		 'Bagel and Lox',
@@ -15,19 +15,19 @@ grupo1(CALS,X):-(CALS < 300 ->
 		 'Clara de huevo y plato Frutas 2',
 		 'Cereales Bowl',
 		 'Shakeology Shake',
-		 'Brindis de Maní Butter',
+		 'Brindis de Mani Butter',
 		 'Proatmeal',
 		 'Berry Protein Smoothie',
 		 'Tortilla Vegetariana'
 	]).
 
 grupo2(X):-
-	X = ['Tortilla de Proteínas',
+	X = ['Tortilla de Proteinas',
 		 'Vainilla-Berry',
 		 'Yogurt Bowl',
 		 'Nutricion Bar',
 		 'Sandwich Deli',
-		 'Turquía BLT'].
+		 'Turquia BLT'].
 
 grupo3(CALS,X):-(CALS < 300 ->
 	X = ['Ensalada de Pollo a la Parrilla',
@@ -50,28 +50,28 @@ grupo3(CALS,X):-(CALS < 300 ->
 grupo4(CALS,X):-(CALS < 300 ->
 	X = ['Cold Corte Disco',
 		 'Locura Sandwich',
-		 'Ensalada de atún',
+		 'Ensalada de atun',
 		 'Shrimp Cocktail'];
 	X = ['Cold Corte Disco',
 		 'Locura Sandwich',
-		 'Ensalada de atún',
+		 'Ensalada de atun',
 		 'Shrimp Cocktail',
 		 'Sashimi',
-		 'Turquía Wrap',
+		 'Turquia Wrap',
 		 'Chile de Pavo',
-		 'Proteína Pizza',
+		 'Proteina Pizza',
 		 'Rotisserie chicken',
 		 'Asado de Carne']).
 
 grupo5(CALS,X):-(CALS < 300 ->
 	X = ['Bacalaoo',
 		 'Hamburguesa de Pollo',
-		 'Salmón a la Parrilla',
+		 'Salmon a la Parrilla',
 		 'Cítricos con Pollo',
 		 'Pasta con Mariscos'];
 	X = ['Bacalaoo',
 		 'Hamburguesa de Pollo',
-		 'Salmón a la Parrilla',
+		 'Salmon a la Parrilla',
 		 'Cítricos con Pollo',
 		 'Pasta con Mariscos',
 		 'Cena de Tortilla',
