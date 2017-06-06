@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Titulo>Bacalao al Horno</title>
+<doc>
+<Titulo>Bacalao al Horno</Titulo>
 <ingredientes>
 	<p>4 oz filete de bacalao</p>
 	<p>1 cdta. aceite de oliva</p>
@@ -15,4 +16,5 @@
 	<p>6 gramos de grasa</p>
 	<p>4 gramos de fibra</p>
 </nutrientes>
-<imagen>./src/Recursos/Imagenes/Dietas/Bacalaoo</imagen>
+<imagen>/Recursos/Imagenes/Dietas/Bacalaoo.jpg</imagen>
+</doc>

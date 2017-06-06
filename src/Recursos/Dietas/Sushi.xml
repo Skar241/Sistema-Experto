@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Titulo>Sushi</title>
+<doc>
+<Titulo>Sushi</Titulo>
 <ingredientes>
 	<p>1 rollo de atún o salmón, hecho con arroz integral si es posible</p>
 	<p>Lado de la ensalada de verduras mixtas</p>
@@ -13,4 +14,5 @@
 	<p>12 gramos de grasa</p>
 	<p>5.5 gramos de fibra</p>
 </nutrientes>
-<imagen>./src/Recursos/Imagenes/Dietas/Sushi.jpg</imagen>
+<imagen>/Recursos/Imagenes/Dietas/Sushi.jpg</imagen>
+</doc>

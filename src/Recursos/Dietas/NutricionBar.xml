@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<doc>
+<Titulo>Nutricion Bar</Titulo>
+<ingredientes>
+	<p>Una barra de la nutrición</p>
+	<p>1 / 2 taza de queso cottage 1%</p>
+	<p>Elija una barra de la nutrición con aproximadamente 200 calorías, menos de 25 gramos de azúcar y por lo menos 10 gramos de proteínas (como la barra de rendimiento P90X Pico). Disponemos de bar nutrición y el requesón.</p>
+</ingredientes>
+<nutrientes>
+	<p>280 calorías</p>
+	<p>29 gramos de proteína</p>
+	<p>26 gramos de hidratos de carbono</p>
+	<p>7.5 gramos de grasa</p>
+	<p>2 gramos de fibra</p>
+</nutrientes>
+<imagen>/Recursos/Imagenes/Dietas/Nutricion Bar.jpg</imagen>
+</doc>

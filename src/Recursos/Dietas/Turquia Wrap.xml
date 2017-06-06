@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Titulo>Turquía Wrap</title>
+<doc>
+<Titulo>Turquía Wrap</Titulo>
 <ingredientes>
 	<p>2 oz deli al estilo de pechuga de pavo en rodajas</p>
 	<p>Tomate en rodajas</p>
@@ -18,4 +19,5 @@
 	<p>11 gramos de grasa</p>
 	<p>7 gramos de fibra</p>
 </nutrientes>
-<imagen>./src/Recursos/Imagenes/Dietas/Turquia.jpg</imagen>
+<imagen>/Recursos/Imagenes/Dietas/Turquia.jpg</imagen>
+</doc>

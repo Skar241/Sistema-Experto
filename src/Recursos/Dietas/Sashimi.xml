@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Titulo>Sashimi</title>
+<doc>
+<Titulo>Sashimi</Titulo>
 <ingredientes>
 	<p>3 oz (Alrededor de 6 piezas) de sashimi</p>
 	<p>1/2 taza de arroz integral, cocido al vapor</p>
@@ -14,4 +15,5 @@
 	<p>12 gramos de grasa</p>
 	<p>3.5 gramos de fibra</p>
 </nutrientes>
-<imagen>./src/Recursos/Imagenes/Dietas/Sashimi.jpg</imagen>
+<imagen>/Recursos/Imagenes/Dietas/Sashimi.jpg</imagen>
+</doc>

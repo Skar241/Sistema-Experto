@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Titulo>Chikenstir</title>
+<doc>
+<Titulo>Chikenstir</Titulo>
 <ingredientes>
 	<p>4 oz pechuga de pollo sin piel, cortado en cubos de 1 pulgada</p>
 	<p>1 taza de floretes de brócoli</p>
@@ -18,4 +19,5 @@
 	<p>9 gramos de grasa</p>
 	<p>6.5 gramos de fibra</p>
 </nutrientes>
-<imagen>./src/Recursos/Imagenes/Dietas/Chickenstir.jpg</imagen>
+<imagen>/Recursos/Imagenes/Dietas/Chickenstir.jpg</imagen>
+</doc>

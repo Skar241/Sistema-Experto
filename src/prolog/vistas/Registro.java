@@ -5,8 +5,11 @@
  */
 package prolog.vistas;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 import prolog.conectores.XmlReader;
@@ -209,7 +212,12 @@ public class Registro extends javax.swing.JFrame {
                 writer.add("rutinaSemanal","rutina"+Integer.toString(jComboBox1.getSelectedIndex()+2)+"D");
                 writer.add("tipocuerpo",this.tipoCuerpo);
                 writer.add("rutinaAnterior","0");
-                writer.add("sigueAdbomen","1"); //1 indica que toca la próxima vez
+                writer.add("sigueAbdomen","1"); //Notificar a Oscar
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+                writer.add("fechareg",dateFormat.format(date));
+                writer.add("fechadieta","");
+                writer.add("dieta","");
                
                 
                 if(writer.write()){
@@ -219,7 +227,6 @@ public class Registro extends javax.swing.JFrame {
 
                     XmlReader reader = new XmlReader("./src/Recursos/Usuarios/"+txt+".xml");
                     JOptionPane.showMessageDialog(null,"Bienvenido "+txt);
-//>>>>>>> 62e645f352d2758b66f8aec5c0f10f0eaa401d81
                     prin.iniciarValores(txt, reader);
                 }
                 else

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Titulo>Salmon</title>
+<doc>
+<Titulo>Salmon</Titulo>
 <ingredientes>
 	<p>3 oz salmón</p>
 	<p>2 tazas de hojas verdes mixtas</p>
@@ -15,4 +16,5 @@
 	<p>8.5 gramos de grasa</p>
 	<p>7.5 gramos de fibra</p>
 </nutrientes>
-<imagen>./src/Recursos/Imagenes/Dietas/Salmon.jpg</imagen>
+<imagen>/Recursos/Imagenes/Dietas/Salmon.jpg</imagen>
+</doc>
